@@ -6,7 +6,7 @@ const projectsData = [
 		title: 'Rewindly - Not just another music player',
 		description:
 			'it’s an experience app. If you lean into that (retro meets modern), Rewindly can stand out in a crowded music-app space.',
-		image: '/public/Rewindlyhome.png', // Add this image to public folder
+		image: '/Rewindlyhome.png', // Fixed path for production
 		gradient: 'from-yellow-400 to-yellow-700',
 		live: 'https://rewindly-ten.vercel.app',
 	},
@@ -14,7 +14,7 @@ const projectsData = [
 		title: 'PeerTask - A Microtask Platform',
 		description:
 			'Built with MERN stack is a platform where students can collab with their peers to exchange favors for a small-task.',
-		image: '/public/Peertask.jpg', // Add this image to public folder
+		image: '/Peertask.jpg', // Fixed path for production
 		gradient: 'from-blue-100 to-purple-100',
 		live: 'https://peer-taskk.vercel.app',
 	},
@@ -22,7 +22,7 @@ const projectsData = [
 		title: 'SkrappeMind - AI powered webscraping tool',
 		description:
 			'A simple web scraping tool for OEM vulnerabilities built purely in Python with Streamlit for a minimal interface.',
-		image: '/public/SkrappeMind.png', // Add this image to public folder
+		image: '/SkrappeMind.png', // Fixed path for production
 		gradient: 'from-gray-900 to-gray-700',
 		live: 'https://Skrappemind.streamlit.app',
 	},
@@ -30,7 +30,7 @@ const projectsData = [
 		title: 'SecureSight - Cybersecurity Dashboard',
 		description:
 			'A dashboard with Cybersecurity tools to make learning fun and interactive.',
-		image: '/public/SecureSight.png', // Add this image to public folder
+		image: '/SecureSight.png', // Fixed path for production
 		gradient: 'from-cyan-900 to-cyan-700',
 		live: 'https://kartiknamdev.github.io/SecureSight/',
 	},
