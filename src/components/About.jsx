@@ -211,7 +211,7 @@ export default function About() {
           <div className="flex flex-col items-center mb-6">
             <UserCircle className={`h-16 w-16 ${accentObj.text} mb-2`} />
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--heading)] heading-shadow mb-2">Hi, I'm Kartik Namdev</h2>
-            <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-white/20 text-[var(--heading)] mb-4" style={{backdropFilter:'blur(8px)'}}>Full Stack Developer & Creator</span>
+            <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-white/20 text-[var(--heading)] mb-4" style={{backdropFilter:'blur(8px)'}}>A Guy who loves to Code & Art</span>
           </div>
           <p className="text-lg text-[var(--text-main)] leading-relaxed mb-4 text-center">
             I love building beautiful, functional web apps and solving real-world problems with code. My background spans Python, Java, MERN stack, and C/C++. I thrive on learning, collaborating, and turning ideas into reality.
