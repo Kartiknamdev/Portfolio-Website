@@ -22,7 +22,7 @@ const projectsData = [
 		title: 'SkrappeMind - AI powered webscraping tool',
 		description:
 			'A simple web scraping tool for OEM vulnerabilities built purely in Python with Streamlit for a minimal interface.',
-		image: '/SkrappeMind.png', // Fixed path for production
+		image: '/Skrappemind.png', // Fixed path for production
 		gradient: 'from-gray-900 to-gray-700',
 		live: 'https://Skrappemind.streamlit.app',
 	},
