@@ -209,18 +209,34 @@ export default function About() {
           transition={{ duration: 0.7, ease: 'easeOut' }}
         >
           <div className="flex flex-col items-center mb-6">
-            <UserCircle className={`h-16 w-16 ${accentObj.text} mb-2`} />
+            {/* Circular photo with subtle gradient ring from accentObj */}
+            <div
+              className="mb-2 rounded-full"
+              style={{
+                padding: '3px',
+                borderRadius: '9999px',
+                background: accentObj.gradient,
+                display: 'inline-block',
+              }}
+            >
+              <img
+                src="/profilepic.jpg"
+                alt="Kartik"
+                className="h-16 w-16 rounded-full object-cover block transition-transform duration-300 transform hover:scale-110"
+                style={{ boxShadow: `0 8px 26px ${accentObj.shadow}` }}
+              />
+            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--heading)] heading-shadow mb-2">Hi, I'm Kartik Namdev</h2>
-            <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-white/20 text-[var(--heading)] mb-4" style={{backdropFilter:'blur(8px)'}}>A Guy who loves to Code & Art</span>
+            <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold bg-white/80 text-black [var(--heading)] mb-4" style={{backdropFilter:'blur(8px)'}}>A Guy who loves to Code & Art</span>
           </div>
           <p className="text-lg text-[var(--text-main)] leading-relaxed mb-4 text-center">
             I love building beautiful, functional web apps and solving real-world problems with code. My background spans Python, Java, MERN stack, and C/C++. I thrive on learning, collaborating, and turning ideas into reality.
           </p>
           <div className="flex flex-wrap gap-3 justify-center mt-6">
-            <span className="px-3 py-1 rounded-full bg-purple-500/20 text-purple-500 font-medium text-xs">Web Dev</span>
-            <span className="px-3 py-1 rounded-full bg-pink-500/20 text-pink-500 font-medium text-xs">UI/UX</span>
-            <span className="px-3 py-1 rounded-full bg-yellow-400/20 text-yellow-500 font-medium text-xs">Problem Solver</span>
-            <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-500 font-medium text-xs">Team Player</span>
+            <span className="px-3 py-1 rounded-full bg-purple-500/50 text-purple-50 font-medium text-xs">Web Dev</span>
+            <span className="px-3 py-1 rounded-full bg-pink-500/50 text-white-500 font-medium text-xs">UI/UX</span>
+            <span className="px-3 py-1 rounded-full bg-yellow-400/10 text-yellow-500 font-medium text-xs">Problem Solver</span>
+            <span className="px-3 py-1 rounded-full bg-blue-500/20 text--500 font-medium text-xs">Team Player</span>
           </div>
         </motion.div>
         {/* Right: Hobbies/Highlights */}
@@ -233,7 +249,7 @@ export default function About() {
         >
           {/* Nature Photography */}
           <motion.div
-            className="glass-card flex items-center gap-5 p-6 rounded-2xl shadow-lg transition-all cursor-pointer hover:scale-[1.03] group"
+            className="glass-card relative overflow-hidden flex items-center gap-5 p-6 rounded-2xl shadow-lg transition-all cursor-pointer hover:scale-[1.03] group"
             style={{backdropFilter:'blur(12px)', background:'linear-gradient(120deg, rgba(236,72,153,0.18) 0%, rgba(255,255,255,0.12) 100%)', border:'1.2px solid rgba(236,72,153,0.18)'}}
             onClick={() => openModal('photography', 'Nature Photography')}
             whileHover={{ boxShadow: '0 8px 32px -8px rgba(236,72,153,0.3)' }}
@@ -245,11 +261,15 @@ export default function About() {
               <h4 className="text-lg font-semibold text-pink-500 heading-shadow mb-1">Nature Photography</h4>
               <p className="text-[var(--text-main)] text-sm">Capturing the beauty of the world fuels my creativity and attention to detail.</p>
             </div>
+            {/* Subtle hover hint: small corner label, non-blocking */}
+            <div className="absolute bottom-3 right-3 rounded-full bg-black/30 px-3 py-1 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
+              <span className="text-white text-xs font-medium tracking-wide">Click to view</span>
+            </div>
           </motion.div>
 
           {/* Canvas Painting */}
           <motion.div
-            className="glass-card flex items-center gap-5 p-6 rounded-2xl shadow-lg transition-all cursor-pointer hover:scale-[1.03] group"
+            className="glass-card relative overflow-hidden flex items-center gap-5 p-6 rounded-2xl shadow-lg transition-all cursor-pointer hover:scale-[1.03] group"
             style={{backdropFilter:'blur(12px)', background:'linear-gradient(120deg, rgba(34,197,94,0.18) 0%, rgba(255,255,255,0.12) 100%)', border:'1.2px solid rgba(34,197,94,0.18)'}}
             onClick={() => openModal('painting', 'Canvas Paintings')}
             whileHover={{ boxShadow: '0 8px 32px -8px rgba(34,197,94,0.3)' }}
@@ -261,12 +281,16 @@ export default function About() {
               <h4 className="text-lg font-semibold text-green-500 heading-shadow mb-1">Canvas Painting</h4>
               <p className="text-[var(--text-main)] text-sm">Exploring colors on canvas lets me relax and express myself artistically.</p>
             </div>
+            {/* Subtle hover hint: small corner label, non-blocking */}
+            <div className="absolute bottom-3 right-3 rounded-full bg-black/30 px-3 py-1 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
+              <span className="text-white text-xs font-medium tracking-wide">Click to view</span>
+            </div>
           </motion.div>
 
           {/* Profile */}
           <div className="glass-card flex items-center gap-5 p-6 rounded-2xl shadow-lg transition-transform hover:scale-[1.03] group" style={{backdropFilter:'blur(12px)', background:'linear-gradient(120deg, rgba(251,191,36,0.18) 0%, rgba(255,255,255,0.12) 100%)', border:'1.2px solid rgba(251,191,36,0.18)'}}>
-            <div className="bg-yellow-100/60 rounded-full p-3 mr-2 group-hover:shadow-yellow-200 transition-shadow">
-              <UserCircle className="h-9 w-9 text-white" style={{filter: 'drop-shadow(0 1px 4px #e5e7eb) brightness(1.2)'}} />
+            <div className="bg-yellow-100/60 rounded-full p-2 mr-2 group-hover:shadow-yellow-200 transition-shadow flex items-center justify-center">
+              <img src="/profilepic.jpg" alt="Kartik" className="h-9 w-9 rounded-full object-cover transition-transform duration-300 transform group-hover:scale-105" style={{filter: 'drop-shadow(0 1px 4px #e5e7eb) brightness(1.2)'}} />
             </div>
             <div>
               <h4 className="text-lg font-semibold text-yellow-500 heading-shadow mb-1">Profile</h4>

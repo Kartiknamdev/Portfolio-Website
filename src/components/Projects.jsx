@@ -32,7 +32,7 @@ const projectsData = [
 			'A dashboard with Cybersecurity tools to make learning fun and interactive.',
 		image: '/SecureSight.png', // Fixed path for production
 		gradient: 'from-cyan-900 to-cyan-700',
-		live: 'https://kartiknamdev.github.io/SecureSight/',
+		live: 'https://secure-sight-v2.vercel.app/',
 	},
 ];
 
