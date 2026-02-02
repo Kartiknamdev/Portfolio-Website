@@ -96,7 +96,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          4th Year CSE Cyber Student
+          Final Year CSE Cyber Student
         </motion.h2>
 
         <motion.p
@@ -115,7 +115,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <a
-            href="/Kartik_Namdev_CV.pdf"
+            href="/Kartik namdev Resume Feb.pdf"
             download
             className="group px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white font-bold rounded-xl shadow-lg transition-all duration-300 ease-in-out text-base relative overflow-hidden"
           >
