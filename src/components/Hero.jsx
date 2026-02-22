@@ -209,118 +209,193 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* Responsive Slide-in About Modal */}
+      {/* About View - Full Screen on Mobile, 3D Modal on Desktop */}
       <AnimatePresence>
         {isAboutOpen && (
-          <motion.div
-            variants={overlayVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            transition={{ duration: 0.2 }}
-            className={`fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 ${isMobile ? 'bg-black/80' : 'bg-black/40 perspective-[2000px]'}`}
-            onClick={() => setIsAboutOpen(false)}
-            style={!isMobile ? { WebkitBackdropFilter: "blur(12px) saturate(150%)" } : {}}
-          >
+          isMobile ? (
+            // Mobile: Full-Screen Dedicated Page View
             <motion.div
-              variants={modalVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={isMobile ? { duration: 0.25, ease: "easeOut" } : { type: "spring", damping: 25, stiffness: 200, mass: 1.2 }}
-              className={`relative w-full max-w-3xl overflow-hidden rounded-[2rem] shadow-2xl text-left flex flex-col md:flex-row group ${isMobile ? 'bg-gray-900 border border-white/5' : 'bg-gray-900/60 border border-white/10'}`}
-              style={!isMobile ? {
-                backdropFilter: 'blur(30px) saturate(200%)',
-                transformStyle: "preserve-3d",
-                WebkitBackdropFilter: "blur(30px) saturate(200%)",
-                transform: "translateZ(0)"
-              } : { WebkitTransform: "translate3d(0,0,0)", overflow: "hidden" }}
-              onClick={(e) => e.stopPropagation()}
+              initial={{ x: '100%', opacity: 0.5 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: '100%', opacity: 0.5 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed inset-0 z-[200] w-full h-[100dvh] bg-gray-900 flex flex-col overflow-y-auto pb-20"
             >
-              {/* Decorative Gradient Blobs (Desktop Only) */}
-              {!isMobile && (
-                <>
-                  <div className="absolute -top-32 -left-32 w-64 h-64 bg-pink-500/20 rounded-full blur-[80px] pointer-events-none" />
-                  <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-blue-500/20 rounded-full blur-[80px] pointer-events-none" />
-                </>
-              )}
+              <div className="sticky top-0 right-0 p-4 flex justify-end bg-gray-900/80 backdrop-blur-md z-50 border-b border-white/5">
+                <button
+                  onClick={() => setIsAboutOpen(false)}
+                  className="p-2 rounded-full bg-white/5 hover:bg-white/10 text-white/70"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
 
-              {/* Close Button */}
-              <button
-                onClick={() => setIsAboutOpen(false)}
-                className={`absolute top-4 right-4 z-20 p-2 rounded-full transition-colors ${isMobile ? 'bg-white/5 hover:bg-white/20 text-white/50 hover:text-white' : 'bg-white/5 hover:bg-white/20 text-white/70 hover:text-white backdrop-blur-md'}`}
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              {/* Left Column: Image & Core Bio */}
-              <div
-                className={`flex-1 p-8 sm:p-10 relative z-10 flex flex-col justify-center border-b md:border-b-0 md:border-r ${isMobile ? 'border-white/5 bg-gray-900' : 'border-white/10'}`}
-                style={!isMobile ? { transform: "translateZ(40px)" } : {}} // 3D pop effect
-              >
-                <div className="flex items-center gap-5 mb-6">
-                  <div className={`p-1 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 ${!isMobile && 'shadow-xl'}`}>
-                    <img src="/profilepic.jpg" alt="Kartik" className={`w-20 h-20 rounded-full object-cover border-2 ${isMobile ? 'border-gray-900' : 'border-transparent'}`} />
+              <div className="flex flex-col p-6 pt-2">
+                <div className="flex flex-col items-center gap-4 mb-8">
+                  <div className="p-1 rounded-full bg-gradient-to-br from-pink-500 to-purple-600">
+                    <img src="/profilepic.jpg" alt="Kartik" className="w-28 h-28 rounded-full object-cover border-4 border-gray-900" />
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-white tracking-tight">Kartik Namdev</h3>
-                    <p className={`text-sm font-medium ${isMobile ? 'text-purple-400' : 'text-purple-300'}`}>A Guy who loves to Code & Art</p>
+                  <div className="text-center">
+                    <h3 className="text-3xl font-bold text-white tracking-tight">Kartik Namdev</h3>
+                    <p className="text-base font-medium text-purple-400 mt-1">A Guy who loves to Code & Art</p>
                   </div>
                 </div>
 
-                <p className={`leading-relaxed font-light text-[15px] mb-6 ${isMobile ? 'text-white/70' : 'text-white/80'}`}>
+                <p className="text-white/80 leading-relaxed font-light text-base mb-8 text-center sm:text-left">
                   I love building beautiful, functional web apps and solving real-world problems with code. My background spans <span className="text-white font-medium">Python, Java, MERN stack, and C/C++</span>. I thrive on learning, collaborating, and turning ideas into reality.
                 </p>
 
-                <div className="flex gap-2 flex-wrap">
+                <div className="flex gap-2 flex-wrap justify-center sm:justify-start mb-10">
                   {['Web Dev', 'UI/UX', 'Problem Solver', 'Team Player'].map(skill => (
-                    <span key={skill} className={`px-3 py-1.5 rounded-lg border text-xs font-medium uppercase tracking-wider ${isMobile ? 'bg-white/5 border-white/5 text-white/80' : 'bg-white/5 border-white/10 text-white/90'}`}>
+                    <span key={skill} className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white/90 text-sm font-medium uppercase tracking-wider">
                       {skill}
                     </span>
                   ))}
                 </div>
-              </div>
 
-              {/* Right Column: Mini Interests */}
-              <div
-                className={`flex-1 p-8 sm:p-10 relative z-10 flex flex-col justify-center gap-6 ${isMobile ? 'bg-black/40' : 'bg-black/20'}`}
-                style={!isMobile ? { transform: "translateZ(20px)" } : {}}
-              >
-                <h4 className="text-xs font-bold text-white/40 uppercase tracking-[0.2em] mb-2">Beyond Coding</h4>
+                <h4 className="text-sm font-bold text-white/40 uppercase tracking-[0.2em] mb-6 text-center sm:text-left">Beyond Coding</h4>
 
-                <div className="flex items-start gap-4 group/item cursor-default">
-                  <div className="p-3 rounded-xl bg-pink-500/10 text-pink-400 group-hover/item:scale-110 group-hover/item:bg-pink-500/20 transition-all border border-pink-500/20">
-                    <Camera className="w-5 h-5" />
+                <div className="flex flex-col gap-6">
+                  <div className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
+                    <div className="p-3 rounded-xl bg-pink-500/10 text-pink-400 border border-pink-500/20">
+                      <Camera className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h5 className="text-white font-medium mb-1 text-lg">Nature Photography</h5>
+                      <p className="text-white/50 text-sm font-light">Capturing the beauty of the world fuels my creativity.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h5 className="text-white font-medium mb-1">Nature Photography</h5>
-                    <p className="text-white/50 text-sm font-light">Capturing the beauty of the world fuels my creativity.</p>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4 group/item cursor-default">
-                  <div className="p-3 rounded-xl bg-green-500/10 text-green-400 group-hover/item:scale-110 group-hover/item:bg-green-500/20 transition-all border border-green-500/20">
-                    <Palette className="w-5 h-5" />
+                  <div className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
+                    <div className="p-3 rounded-xl bg-green-500/10 text-green-400 border border-green-500/20">
+                      <Palette className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h5 className="text-white font-medium mb-1 text-lg">Canvas Painting</h5>
+                      <p className="text-white/50 text-sm font-light">Exploring colors to relax and express myself artistically.</p>
+                    </div>
                   </div>
-                  <div>
-                    <h5 className="text-white font-medium mb-1">Canvas Painting</h5>
-                    <p className="text-white/50 text-sm font-light">Exploring colors to relax and express myself artistically.</p>
-                  </div>
-                </div>
 
-                <div className="flex items-start gap-4 group/item cursor-default">
-                  <div className="p-3 rounded-xl bg-yellow-500/10 text-yellow-400 group-hover/item:scale-110 group-hover/item:bg-yellow-500/20 transition-all border border-yellow-500/20">
-                    <Terminal className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h5 className="text-white font-medium mb-1">Tech Innovation</h5>
-                    <p className="text-white/50 text-sm font-light">Always eager to learn, adapt, and contribute to new ideas.</p>
+                  <div className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
+                    <div className="p-3 rounded-xl bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
+                      <Terminal className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <h5 className="text-white font-medium mb-1 text-lg">Tech Innovation</h5>
+                      <p className="text-white/50 text-sm font-light">Always eager to learn, adapt, and contribute to new ideas.</p>
+                    </div>
                   </div>
                 </div>
               </div>
-
             </motion.div>
-          </motion.div>
+          ) : (
+            // Desktop: 3D Glassmorphic Modal
+            <motion.div
+              variants={overlayVariants}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/40 perspective-[2000px]"
+              onClick={() => setIsAboutOpen(false)}
+              style={{ WebkitBackdropFilter: "blur(12px) saturate(150%)" }}
+            >
+              <motion.div
+                variants={modalVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ type: "spring", damping: 25, stiffness: 200, mass: 1.2 }}
+                className="relative w-full max-w-4xl overflow-hidden rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] text-left flex flex-row group bg-gray-900/60 border border-white/10"
+                style={{
+                  backdropFilter: 'blur(30px) saturate(200%)',
+                  transformStyle: "preserve-3d",
+                  willChange: "transform, opacity",
+                  WebkitBackdropFilter: "blur(30px) saturate(200%)",
+                  transform: "translateZ(0)"
+                }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Decorative Gradient Blobs (Desktop Only) */}
+                <div className="absolute -top-32 -left-32 w-64 h-64 bg-pink-500/20 rounded-full blur-[80px] pointer-events-none" />
+                <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-blue-500/20 rounded-full blur-[80px] pointer-events-none" />
+
+                {/* Close Button */}
+                <button
+                  onClick={() => setIsAboutOpen(false)}
+                  className="absolute top-4 right-4 z-20 p-2 rounded-full transition-colors bg-white/5 hover:bg-white/20 text-white/70 hover:text-white backdrop-blur-md"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                {/* Left Column: Image & Core Bio */}
+                <div
+                  className="flex-1 p-10 relative z-10 flex flex-col justify-center border-r border-white/10"
+                  style={{ transform: "translateZ(40px)" }} // 3D pop effect
+                >
+                  <div className="flex items-center gap-5 mb-6">
+                    <div className="p-1 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 shadow-xl">
+                      <img src="/profilepic.jpg" alt="Kartik" className="w-20 h-20 rounded-full object-cover border-2 border-transparent" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white tracking-tight">Kartik Namdev</h3>
+                      <p className="text-sm font-medium text-purple-300">A Guy who loves to Code & Art</p>
+                    </div>
+                  </div>
+
+                  <p className="leading-relaxed font-light text-[15px] mb-6 text-white/80">
+                    I love building beautiful, functional web apps and solving real-world problems with code. My background spans <span className="text-white font-medium">Python, Java, MERN stack, and C/C++</span>. I thrive on learning, collaborating, and turning ideas into reality.
+                  </p>
+
+                  <div className="flex gap-2 flex-wrap">
+                    {['Web Dev', 'UI/UX', 'Problem Solver', 'Team Player'].map(skill => (
+                      <span key={skill} className="px-3 py-1.5 rounded-lg border text-xs font-medium uppercase tracking-wider bg-white/5 border-white/10 text-white/90">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Right Column: Mini Interests */}
+                <div
+                  className="flex-1 p-10 relative z-10 flex flex-col justify-center gap-6 bg-black/20"
+                  style={{ transform: "translateZ(20px)" }}
+                >
+                  <h4 className="text-xs font-bold text-white/40 uppercase tracking-[0.2em] mb-2">Beyond Coding</h4>
+
+                  <div className="flex items-start gap-4 group/item cursor-default">
+                    <div className="p-3 rounded-xl bg-pink-500/10 text-pink-400 group-hover/item:scale-110 group-hover/item:bg-pink-500/20 transition-all border border-pink-500/20">
+                      <Camera className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h5 className="text-white font-medium mb-1">Nature Photography</h5>
+                      <p className="text-white/50 text-sm font-light">Capturing the beauty of the world fuels my creativity.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 group/item cursor-default">
+                    <div className="p-3 rounded-xl bg-green-500/10 text-green-400 group-hover/item:scale-110 group-hover/item:bg-green-500/20 transition-all border border-green-500/20">
+                      <Palette className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h5 className="text-white font-medium mb-1">Canvas Painting</h5>
+                      <p className="text-white/50 text-sm font-light">Exploring colors to relax and express myself artistically.</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4 group/item cursor-default">
+                    <div className="p-3 rounded-xl bg-yellow-500/10 text-yellow-400 group-hover/item:scale-110 group-hover/item:bg-yellow-500/20 transition-all border border-yellow-500/20">
+                      <Terminal className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h5 className="text-white font-medium mb-1">Tech Innovation</h5>
+                      <p className="text-white/50 text-sm font-light">Always eager to learn, adapt, and contribute to new ideas.</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )
         )}
       </AnimatePresence>
     </>
