@@ -26,6 +26,20 @@ export default function Hero() {
     return () => window.removeEventListener('keydown', handleEsc);
   }, []);
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (isAboutOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isAboutOpen]);
+
   return (
     <>
       <section className="min-h-[90vh] md:min-h-screen flex items-center justify-center relative overflow-hidden py-8 md:py-0">
@@ -175,8 +189,9 @@ export default function Hero() {
             initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
             animate={{ opacity: 1, backdropFilter: "blur(12px) saturate(150%)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/40 perspective-[2000px]"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/40 perspective-[2000px] will-change-opacity"
             onClick={() => setIsAboutOpen(false)}
+            style={{ WebkitBackdropFilter: "blur(12px) saturate(150%)" }}
           >
             <motion.div
               initial={{ opacity: 0, rotateY: 90, x: 300, scale: 0.8 }}
@@ -186,7 +201,10 @@ export default function Hero() {
               className="relative w-full max-w-3xl overflow-hidden rounded-[2rem] bg-gray-900/60 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border border-white/10 text-left flex flex-col md:flex-row group"
               style={{
                 backdropFilter: 'blur(30px) saturate(200%)',
-                transformStyle: "preserve-3d"
+                transformStyle: "preserve-3d",
+                willChange: "transform, opacity",
+                WebkitBackdropFilter: "blur(30px) saturate(200%)",
+                transform: "translateZ(0)"
               }}
               onClick={(e) => e.stopPropagation()}
             >

@@ -99,24 +99,25 @@ export default function Navbar() {
             />
 
             {/* Radial Slider Menu Container */}
+            {/* Radial Slider Menu Container */}
             <motion.div
               initial={{ opacity: 0, x: 50, scale: 0.9 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: 50, scale: 0.9 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="md:hidden fixed top-24 bottom-24 right-2 z-[105] flex flex-col justify-center py-4 px-2 bg-gray-900/60 backdrop-blur-3xl border border-white/20 rounded-full shadow-2xl overflow-y-auto no-scrollbar"
+              className="md:hidden fixed top-24 bottom-24 right-3 z-[105] flex flex-col justify-center py-6 px-5 bg-gray-900/60 backdrop-blur-3xl border border-white/20 rounded-[2rem] shadow-2xl overflow-y-auto no-scrollbar"
               style={{ boxShadow: "0 0 40px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.05)" }}
             >
-              <div className="flex flex-col items-center justify-center space-y-6 my-auto h-full min-h-max">
+              <div className="flex flex-col items-center justify-center space-y-8 my-auto h-full min-h-max">
                 {links.map((link, i) => (
                   <motion.a
                     key={link.name}
                     href={link.href}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ delay: i * 0.05, type: "spring", stiffness: 300, damping: 20 }}
-                    className={`relative transform origin-center text-white/70 hover:text-white font-bold text-xs tracking-widest uppercase transition-all duration-300 py-1 -rotate-90 block hover:scale-110 flex-shrink-0
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
+                    className={`relative text-white/70 hover:text-white font-bold text-xs tracking-widest uppercase transition-all duration-300 py-2 px-1 mx-1 block hover:scale-110 flex-shrink-0 text-center
                       after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-gradient-to-r ${accentObj.from} ${accentObj.to} after:transition-all after:duration-300 hover:after:w-full`}
                     style={{ writingMode: 'vertical-rl' }}
                     onClick={() => setMenuOpen(false)}
