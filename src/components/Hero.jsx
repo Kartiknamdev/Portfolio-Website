@@ -182,28 +182,25 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* 3D Slide-in About Modal */}
+      {/* Simplified Slide-in About Modal for Performance */}
       <AnimatePresence>
         {isAboutOpen && (
           <motion.div
-            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={{ opacity: 1, backdropFilter: "blur(12px) saturate(150%)" }}
-            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/40 perspective-[2000px] will-change-opacity"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-md will-change-opacity"
             onClick={() => setIsAboutOpen(false)}
-            style={{ WebkitBackdropFilter: "blur(12px) saturate(150%)" }}
           >
             <motion.div
-              initial={{ opacity: 0, rotateY: 90, x: 300, scale: 0.8 }}
-              animate={{ opacity: 1, rotateY: 0, x: 0, scale: 1 }}
-              exit={{ opacity: 0, rotateY: -90, x: -300, scale: 0.8 }}
-              transition={{ type: "spring", damping: 25, stiffness: 200, mass: 1.2 }}
-              className="relative w-full max-w-3xl overflow-hidden rounded-[2rem] bg-gray-900/60 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border border-white/10 text-left flex flex-col md:flex-row group"
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.95 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300, mass: 0.8 }}
+              className="relative w-full max-w-3xl overflow-hidden rounded-[2rem] bg-gray-900 shadow-2xl border border-white/10 text-left flex flex-col md:flex-row group"
               style={{
-                backdropFilter: 'blur(30px) saturate(200%)',
-                transformStyle: "preserve-3d",
                 willChange: "transform, opacity",
-                WebkitBackdropFilter: "blur(30px) saturate(200%)",
                 transform: "translateZ(0)"
               }}
               onClick={(e) => e.stopPropagation()}
