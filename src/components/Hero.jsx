@@ -218,7 +218,7 @@ export default function Hero() {
             animate="visible"
             exit="hidden"
             transition={{ duration: 0.2 }}
-            className={`fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 will-change-opacity ${isMobile ? 'bg-black/80' : 'bg-black/40 perspective-[2000px]'}`}
+            className={`fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 ${isMobile ? 'bg-black/80' : 'bg-black/40 perspective-[2000px]'}`}
             onClick={() => setIsAboutOpen(false)}
             style={!isMobile ? { WebkitBackdropFilter: "blur(12px) saturate(150%)" } : {}}
           >
@@ -227,15 +227,14 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               exit="exit"
-              transition={isMobile ? { duration: 0.2, ease: "easeOut" } : { type: "spring", damping: 25, stiffness: 200, mass: 1.2 }}
+              transition={isMobile ? { duration: 0.25, ease: "easeOut" } : { type: "spring", damping: 25, stiffness: 200, mass: 1.2 }}
               className={`relative w-full max-w-3xl overflow-hidden rounded-[2rem] shadow-2xl text-left flex flex-col md:flex-row group ${isMobile ? 'bg-gray-900 border border-white/5' : 'bg-gray-900/60 border border-white/10'}`}
               style={!isMobile ? {
                 backdropFilter: 'blur(30px) saturate(200%)',
                 transformStyle: "preserve-3d",
-                willChange: "transform, opacity",
                 WebkitBackdropFilter: "blur(30px) saturate(200%)",
                 transform: "translateZ(0)"
-              } : { willChange: "transform, opacity" }}
+              } : { WebkitTransform: "translate3d(0,0,0)", overflow: "hidden" }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Decorative Gradient Blobs (Desktop Only) */}
