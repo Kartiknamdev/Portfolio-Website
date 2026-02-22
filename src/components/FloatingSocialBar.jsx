@@ -4,11 +4,11 @@ import { useTheme } from '../context/ThemeContext';
 import { Github, Linkedin, Twitter, Instagram, Mail } from 'lucide-react';
 
 const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'X' },
-    { icon: Instagram, href: 'https://instagram.com', label: 'Instagram' },
-    { icon: Mail, href: 'mailto:contact@example.com', label: 'Email' }
+    { icon: Github, href: 'https://github.com/Kartiknamdev', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://linkedin.com/in/kartikknamdev', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://x.com/KartikN69809009', label: 'X' },
+    { icon: Instagram, href: 'https://instagram.com/kartikknamdev', label: 'Instagram' },
+    { icon: Mail, href: 'mailto:kartikk12na@gmail.com', label: 'Email' }
 ];
 
 export default function FloatingSocialBar() {

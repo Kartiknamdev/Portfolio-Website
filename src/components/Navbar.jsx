@@ -22,10 +22,10 @@ export default function Navbar() {
 
   const links = [
     { name: 'Home', href: '#' },
-    { name: 'About', href: '#about' },
+    
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
-    { name: 'Resume', href: '#resume' },
+    { name: 'Journey', href: '#resume' },
   ];
 
   return (

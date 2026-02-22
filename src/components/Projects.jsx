@@ -102,7 +102,7 @@ const ProjectCard = ({ project, index, accentObj }) => {
 							rel="noopener noreferrer"
 							className={`px-8 py-4 text-base font-semibold rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-xl flex items-center gap-3 hover:bg-white/20 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 group inline-flex`}
 						>
-							View Case Study
+							Checkout The Project
 							<ExternalLink className="w-4 h-4 text-white/70 group-hover:text-white transition-colors" />
 						</a>
 					</div>
