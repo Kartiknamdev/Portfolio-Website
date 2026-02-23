@@ -3,8 +3,11 @@ import Hero from './components/Hero';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Resume from './components/Resume';
+import WhyMe from './components/WhyMe';
 import ThemeToggleMenu from './components/ThemeToggleMenu';
 import FloatingSocialBar from './components/FloatingSocialBar';
+import ScrollToTop from './components/ScrollToTop';
+import CustomCursor from './components/CustomCursor';
 import { useTheme } from './context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
@@ -14,6 +17,7 @@ function App() {
 
   return (
     <div className="overflow-hidden max-w-[100vw]">
+      <CustomCursor />
       {/* Main Dynamic Background */}
       <motion.div
         className="relative min-h-screen w-full overflow-hidden"
@@ -67,16 +71,20 @@ function App() {
 
         <div className="relative z-10">
           <Navbar />
-          <main className="px-4 md:px-8 mx-auto w-[95%] md:w-[90%] max-w-7xl">
-            <Hero />
+          <Hero />
+          {/* Negative margin pulls the main content up, overlapping the Hero container's scroll track. 
+              This eliminates dead scroll space so the snap works perfectly 1-viewport high. */}
+          <main className="px-4 md:px-8 mx-auto w-[95%] md:w-[90%] max-w-7xl -mt-[50vh] md:-mt-[100vh] relative z-20">
             <div className="space-y-16 md:space-y-24">
               <Projects />
               <Resume />
               <Skills />
+              <WhyMe />
             </div>
           </main>
           <ThemeToggleMenu />
           <FloatingSocialBar />
+          <ScrollToTop />
         </div>
 
         {/* Dynamic Global Background Orbs - Lightweight */}

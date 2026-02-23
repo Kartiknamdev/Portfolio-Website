@@ -83,8 +83,17 @@ const ProjectCard = ({ project, index, accentObj }) => {
 					<p className={`text-sm md:text-base font-bold tracking-[0.2em] uppercase mb-4 text-transparent bg-clip-text bg-gradient-to-r ${accentObj.from} ${accentObj.to}`}>
 						Selected Work 0{index + 1}
 					</p>
-					<h3 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2 leading-tight drop-shadow-md">
-						{mainTitle}
+					<h3 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2 leading-tight drop-shadow-md flex flex-wrap justify-center md:justify-start">
+						{mainTitle.split('').map((letter, i) => (
+							<motion.span
+								key={i}
+								className={`inline-block cursor-default transition-colors duration-200 hover:text-orange-500 ${letter === ' ' ? 'w-[0.25em]' : ''}`}
+								whileHover={{ scaleY: [1, 0.75, 1.25, 0.9, 1], scaleX: [1, 1.25, 0.75, 1.05, 1] }}
+								transition={{ duration: 0.5, ease: "easeInOut" }}
+							>
+								{letter}
+							</motion.span>
+						))}
 					</h3>
 					{subTitle && (
 						<h4 className="text-xl md:text-2xl font-semibold text-white/90 mb-6 italic">
@@ -102,7 +111,7 @@ const ProjectCard = ({ project, index, accentObj }) => {
 							rel="noopener noreferrer"
 							className={`px-8 py-4 text-base font-semibold rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-xl flex items-center gap-3 hover:bg-white/20 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 group inline-flex`}
 						>
-							Checkout The Project
+							Visit the app
 							<ExternalLink className="w-4 h-4 text-white/70 group-hover:text-white transition-colors" />
 						</a>
 					</div>
@@ -116,7 +125,7 @@ export default function Projects() {
 	const { accentObj } = useTheme();
 
 	return (
-		<section id="projects" className="py-20 text-white relative z-10">
+		<section id="projects" className="py-20 text-white relative z-10 snap-start">
 			<div className="flex flex-col items-center w-full">
 
 				{/* Header */}

@@ -5,32 +5,32 @@ import { useTheme } from '../context/ThemeContext';
 
 const skillsData = {
   frontend: [
-    { name: "HTML5", level: 95, icon: <Code className="h-5 w-5 mr-2 text-orange-400" /> },
-    { name: "CSS", level: 95, icon: <Code className="h-5 w-5 mr-2 text-blue-400" /> },
-    { name: "React", level: 90, icon: <Code className="h-5 w-5 mr-2 text-sky-400" /> },
-    { name: "Javascript", level: 85, icon: <Code className="h-5 w-5 mr-2 text-yellow-400" /> },
+    { name: "HTML5", level: 95, icon: <Code className="h-6 w-6 text-orange-400" /> },
+    { name: "CSS", level: 95, icon: <Code className="h-6 w-6 text-blue-400" /> },
+    { name: "React", level: 90, icon: <Code className="h-6 w-6 text-sky-400" /> },
+    { name: "Javascript", level: 85, icon: <Code className="h-6 w-6 text-yellow-400" /> },
   ],
   backend: [
     // Add backend skills here if any, e.g.:
-    // { name: "Node.js", level: 80, icon: <Database className="h-5 w-5 mr-2 text-green-400" /> },
-    // { name: "Express", level: 75, icon: <Database className="h-5 w-5 mr-2 text-green-500" /> },
+    // { name: "Node.js", level: 80, icon: <Database className="h-6 w-6 text-green-400" /> },
+    // { name: "Express", level: 75, icon: <Database className="h-6 w-6 text-green-500" /> },
   ],
   development: [
-    { name: "Web Development", level: 90, icon: <Layers className="h-5 w-5 mr-2 text-purple-400" /> },
-    { name: "Software Development", level: 85, icon: <Settings className="h-5 w-5 mr-2 text-gray-400" /> },
-    { name: "Python", level: 90, icon: <Code className="h-5 w-5 mr-2 text-blue-500" /> },
-    { name: "C/C++", level: 85, icon: <Code className="h-5 w-5 mr-2 text-indigo-400" /> },
-     { name: "JAVA", level: 80, icon: <Code className="h-5 w-5 mr-2 text-indigo-400" /> },
+    { name: "Web Dev", level: 90, icon: <Layers className="h-6 w-6 text-purple-400" /> },
+    { name: "Software Dev", level: 85, icon: <Settings className="h-6 w-6 text-gray-400" /> },
+    { name: "Python", level: 90, icon: <Code className="h-6 w-6 text-blue-500" /> },
+    { name: "C/C++", level: 85, icon: <Code className="h-6 w-6 text-indigo-400" /> },
+    { name: "JAVA", level: 80, icon: <Code className="h-6 w-6 text-indigo-400" /> },
   ],
   tools: [
-    { name: "Visual Studio Code", icon: <Settings className="h-5 w-5 mr-2 text-sky-500" /> },
-    { name: "Git", icon: <Settings className="h-5 w-5 mr-2 text-red-500" /> },
-    { name: "GitHub", icon: <Settings className="h-5 w-5 mr-2 text-gray-300" /> },
-    { name: "Figma", icon: <Settings className="h-5 w-5 mr-2 text-pink-500" /> },
-    { name: "Spline", icon: <Settings className="h-5 w-5 mr-2 text-purple-500" /> },
-    { name: "Powerpoint", level: 85, icon: <Settings className="h-5 w-5 mr-2 text-orange-500" /> },
-    { name: 'Uiverse.io', icon: <Code className="h-5 w-5 mr-2 text-yellow-400" /> },
-    { name: 'Canva', icon: <Code className="h-5 w-5 mr-2 text-yellow-400" /> },
+    { name: "VS Code", icon: <Settings className="h-6 w-6 text-sky-500" /> },
+    { name: "Git", icon: <Settings className="h-6 w-6 text-red-500" /> },
+    { name: "GitHub", icon: <Settings className="h-6 w-6 text-gray-300" /> },
+    { name: "Figma", icon: <Settings className="h-6 w-6 text-pink-500" /> },
+    { name: "Spline", icon: <Settings className="h-6 w-6 text-purple-500" /> },
+    { name: "Powerpoint", icon: <Settings className="h-6 w-6 text-orange-500" /> },
+    { name: 'Uiverse.io', icon: <Code className="h-6 w-6 text-yellow-400" /> },
+    { name: 'Canva', icon: <Code className="h-6 w-6 text-yellow-400" /> },
   ],
 };
 
@@ -44,7 +44,7 @@ const SkillBar = ({ name, level, icon }) => (
     </div>
     {level && (
       <div className="w-full inner-bg rounded-full h-2.5">
-        <motion.div 
+        <motion.div
           className="bg-gradient-to-r from-purple-500 to-pink-500 h-2.5 rounded-full"
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
@@ -56,37 +56,28 @@ const SkillBar = ({ name, level, icon }) => (
   </div>
 );
 
-const ToolPill = ({ name, icon }) => (
-  <motion.div 
-    className="flex items-center inner-bg bg-opacity-60 backdrop-blur-sm theme-accent px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300 transform hover:scale-105"
-    initial={{ opacity: 0, scale: 0.8 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true, amount: 0.5 }}
-    transition={{ duration: 0.5, ease: 'easeOut' }}
-  >
-    {icon}{name}
-  </motion.div>
-);
-
 export default function Skills() {
   const { accentObj } = useTheme();
-  const [showModal, setShowModal] = useState(false);
-  // Example extra skills/tools
+
+  // Example extra skills/tools combined with original tools for the marquee
   const moreSkills = [
-    { name: 'TypeScript', icon: <Code className="h-5 w-5 mr-2 text-blue-400" /> },
-    { name: 'Tailwind CSS', icon: <Code className="h-5 w-5 mr-2 text-cyan-400" /> },
-    { name: 'MongoDB', icon: <Database className="h-5 w-5 mr-2 text-green-500" /> },
-    { name: 'Docker', icon: <Settings className="h-5 w-5 mr-2 text-blue-500" /> },
-    { name: 'Linux', icon: <Settings className="h-5 w-5 mr-2 text-gray-300" /> },
-    { name: 'Firebase', icon: <Settings className="h-5 w-5 mr-2 text-yellow-400" /> },
-    { name: 'Supabase', icon: <Database className="h-5 w-5 mr-2 text-yellow-400" /> },
-    // Add more as needed
+    { name: 'TypeScript', icon: <Code className="h-6 w-6 text-blue-400" /> },
+    { name: 'Tailwind CSS', icon: <Code className="h-6 w-6 text-cyan-400" /> },
+    { name: 'MongoDB', icon: <Database className="h-6 w-6 text-green-500" /> },
+    { name: 'Docker', icon: <Settings className="h-6 w-6 text-blue-500" /> },
+    { name: 'Linux', icon: <Settings className="h-6 w-6 text-gray-300" /> },
+    { name: 'Firebase', icon: <Settings className="h-6 w-6 text-yellow-400" /> },
+    { name: 'Supabase', icon: <Database className="h-6 w-6 text-yellow-400" /> },
   ];
+
+  const allTools = [...skillsData.tools, ...moreSkills];
+  const marqueeTools = [...allTools, ...allTools];
+
   return (
-    <section id="skills" className="py-20 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.h2 
-          className="text-4xl md:text-5xl font-bold text-center mb-16 heading-shadow leading-tight"
+    <section id="skills" className="py-20 relative z-10 w-full overflow-hidden">
+      <div className="w-full">
+        <motion.h2
+          className="text-4xl md:text-5xl font-extrabold text-center mb-16 text-white drop-shadow-md"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -94,101 +85,86 @@ export default function Skills() {
         >
           Tools and Skills
         </motion.h2>
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Skills with progress bars */}
-          <div className="space-y-8">
-            {Object.entries(skillsData).map(([category, skills]) => {
-              if (category === 'tools') return null; // Tools are handled separately
-              const categorySkills = skills.filter(skill => skill.level);
-              if (categorySkills.length === 0) return null;
-              return (
-                <motion.div 
-                  key={category} 
-                  className="relative flex flex-col items-center justify-center glass-card rounded-3xl p-10 border border-white/10 shadow-2xl backdrop-blur-2xl bg-black/70 transition-transform duration-300 hover:scale-[1.03] overflow-hidden"
-                  style={{ boxShadow: `0 8px 32px 0 ${accentObj.shadow || 'rgba(80,0,200,0.25)'}` }}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.7, ease: 'easeOut' }}
-                >
-                  {/* Accent Glow */}
-                  <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full opacity-30 blur-2xl pointer-events-none" style={{ background: accentObj.gradient || accentObj.color }} />
-                  <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full opacity-20 blur-2xl pointer-events-none" style={{ background: accentObj.gradient || accentObj.color }} />
-                  <h3 className="text-2xl font-bold text-center mb-6 theme-accent heading-shadow capitalize">
-                    {category.replace(/([A-Z])/g, ' $1')}
-                  </h3>
-                  <div className="w-full max-w-md mx-auto">
-                    {categorySkills.map((skill, index) => (
-                      <SkillBar key={index} name={skill.name} level={skill.level} icon={skill.icon} />
-                    ))}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-          {/* Tools as pills */}
-          <motion.div 
-            className="relative flex flex-col items-center justify-center glass-card rounded-3xl p-10 border border-white/10 shadow-2xl backdrop-blur-2xl bg-black/70 transition-transform duration-300 hover:scale-[1.03] overflow-hidden"
-            style={{ boxShadow: `0 8px 32px 0 ${accentObj.shadow || 'rgba(80,0,200,0.25)'}` }}
+
+        {/* Bento Grid Layout - Now evenly split across 2 columns to prevent wasted space */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-8 gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {Object.entries(skillsData).map(([category, skills], index) => {
+            if (category === 'tools' || skills.length === 0) return null;
+
+            return (
+              <motion.div
+                key={category}
+                className="relative flex flex-col p-8 md:p-10 rounded-[2rem] bg-gray-900/60 border border-white/5 backdrop-blur-xl overflow-hidden group hover:border-white/10 transition-colors shadow-2xl h-full"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.7, delay: index * 0.1, ease: 'easeOut' }}
+              >
+                <div
+                  className="absolute -top-10 -right-10 w-48 h-48 rounded-full blur-[60px] opacity-20 pointer-events-none group-hover:opacity-40 transition-opacity duration-700"
+                  style={{ background: accentObj.gradient || accentObj.from || '#8b5cf6' }}
+                />
+
+                <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white tracking-wide capitalize relative z-10 text-center md:text-left">
+                  {category.replace(/([A-Z])/g, ' $1')}
+                </h3>
+
+                <div className="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 relative z-10">
+                  {skills.map((skill, idx) => (
+                    <div key={idx} className="flex flex-col items-center justify-center p-4 md:p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors text-center w-full">
+                      <div className="mb-4 p-3 rounded-xl bg-black/40 border border-white/10 shadow-inner flex items-center justify-center">
+                        {skill.icon}
+                      </div>
+                      <span className="text-white font-semibold text-sm sm:text-base mb-1">{skill.name}</span>
+                      {skill.level && (
+                        <span className="text-white/40 text-[10px] sm:text-xs uppercase tracking-wider font-bold block w-full">
+                          {skill.level}% Proficiency
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
+
+          <motion.div
+            className="md:col-span-2 relative flex flex-col p-8 md:p-10 rounded-[2rem] bg-gray-900/60 border border-white/5 backdrop-blur-xl overflow-hidden group hover:border-white/10 transition-colors shadow-2xl"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7, delay:0.2, ease: 'easeOut' }}
+            transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
           >
-            <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full opacity-30 blur-2xl pointer-events-none" style={{ background: accentObj.gradient || accentObj.color }} />
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full opacity-20 blur-2xl pointer-events-none" style={{ background: accentObj.gradient || accentObj.color }} />
-            <h3 className="text-2xl font-bold text-center mb-8 theme-accent heading-shadow">
-              Tools I Use
+            <div
+              className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full blur-[80px] opacity-20 pointer-events-none group-hover:opacity-30 transition-opacity duration-700"
+              style={{ background: accentObj.gradient || accentObj.to || '#ec4899' }}
+            />
+
+            <h3 className="text-2xl md:text-3xl font-bold mb-8 text-white tracking-wide relative z-10">
+              Tools & Software
             </h3>
-            <div className="flex flex-wrap gap-3 justify-center">
-              {skillsData.tools.map((tool, index) => (
-                <ToolPill key={index} name={tool.name} icon={tool.icon} />
-              ))}
-            </div>
-            <div className="text-center mt-10">
-                <button
-                    onClick={() => setShowModal(true)}
-                    className="px-6 py-3 theme-accent bg-white/10 border border-white/10 font-semibold rounded-xl shadow-md hover:shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out"
-                >
-                    View More
-                </button>
-            </div>
-          </motion.div>
-        </div>
-        {/* Modal Popup */}
-        {showModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center">
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm" onClick={() => setShowModal(false)}></div>
-            {/* Glass Modal */}
-            <motion.div
-              className="relative flex flex-col items-center justify-center glass-card rounded-3xl p-10 border border-white/10 shadow-2xl backdrop-blur-2xl bg-black/70 w-full max-w-md mx-4 overflow-hidden"
-              style={{ boxShadow: `0 8px 32px 0 ${accentObj.shadow || 'rgba(80,0,200,0.25)'}` }}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
+
+            {/* Infinite Horizontal Marquee */}
+            <div
+              className="relative w-full flex overflow-hidden z-10"
+              style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
             >
-              <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full opacity-30 blur-2xl pointer-events-none" style={{ background: accentObj.gradient || accentObj.color }} />
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full opacity-20 blur-2xl pointer-events-none" style={{ background: accentObj.gradient || accentObj.color }} />
-              <button
-                className="absolute top-4 right-4 text-white hover:text-gray-300 focus:outline-none"
-                onClick={() => setShowModal(false)}
-                aria-label="Close modal"
+              <motion.div
+                className="flex whitespace-nowrap gap-4 py-2 shrink-0 items-center justify-start min-w-full"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
               >
-                <X className="w-7 h-7" />
-              </button>
-              <h3 className="text-2xl font-bold mb-6 theme-accent text-center heading-shadow">More Tools & Skills</h3>
-              <div className="flex flex-wrap gap-3 justify-center">
-                {moreSkills.map((skill, idx) => (
-                  <div key={idx} className="flex items-center inner-bg bg-opacity-60 backdrop-blur-sm theme-accent px-4 py-2 rounded-full shadow-md">
-                    {skill.icon}{skill.name}
+                {marqueeTools.map((tool, index) => (
+                  <div key={index} className="flex items-center gap-3 px-6 py-3.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shrink-0 hover:bg-white/10 transition-colors cursor-default">
+                    {tool.icon}
+                    <span className="text-white/90 font-medium tracking-wide">{tool.name}</span>
                   </div>
                 ))}
-              </div>
-            </motion.div>
-          </div>
-        )}
+              </motion.div>
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

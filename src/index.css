@@ -18,12 +18,14 @@
 
 html {
   height: 100%;
-  background-color: #111827; /* Tailwind gray-900 for dark mode */
+  background-color: #111827;
+  /* Tailwind gray-900 for dark mode */
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
   overflow-x: hidden;
   max-width: 100vw;
+  scroll-snap-type: y proximity;
 }
 
 body {
@@ -51,6 +53,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -71,9 +74,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -89,26 +94,39 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   html {
-    background-color: #ffffff; /* Light mode background for html */
+    background-color: #ffffff;
+    /* Light mode background for html */
   }
+
   body {
     color: #213547;
-    background-color: #ffffff; /* Light mode background for body */
+    background-color: #ffffff;
+    /* Light mode background for body */
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
 }
 
 @keyframes slide-in-right {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
+
 .animate-slide-in-right {
-  animation: slide-in-right 0.3s cubic-bezier(0.4,0,0.2,1) both;
+  animation: slide-in-right 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 @keyframes fogAnimation {
@@ -116,16 +134,20 @@ button:focus-visible {
     transform: translateX(-100%) translateY(0);
     opacity: 0;
   }
+
   25% {
     opacity: 0.5;
   }
+
   50% {
     transform: translateX(0) translateY(-15%);
     opacity: 0.3;
   }
+
   75% {
     opacity: 0.5;
   }
+
   100% {
     transform: translateX(100%) translateY(0);
     opacity: 0;
@@ -136,9 +158,11 @@ button:focus-visible {
   0% {
     opacity: 0.1;
   }
+
   50% {
     opacity: 0.3;
   }
+
   100% {
     opacity: 0.1;
   }
@@ -153,7 +177,7 @@ button:focus-visible {
 }
 
 .heading-shadow {
-  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .glass-card {
@@ -168,18 +192,23 @@ button:focus-visible {
 }
 
 /* Fix for elements that might extend beyond viewport width */
-img, div, section {
+img,
+div,
+section {
   max-width: 100%;
 }
 
 /* Custom scrollbar for thumbnail gallery */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 /* Optional: Styles for devices that still show scrollbars */
