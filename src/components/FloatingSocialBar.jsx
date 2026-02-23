@@ -16,12 +16,13 @@ export default function FloatingSocialBar() {
 
     return (
         <>
-            {/* Desktop: Right Side Floating Pill */}
+            {/* Desktop: Bottom Left Floating Bar */}
             <motion.div
-                className="hidden md:flex fixed right-0 top-1/3 -translate-y-1/2 z-[100] flex-col gap-2 p-2 rounded-l-3xl bg-white/5 border border-white/10 border-r-0 backdrop-blur-xl shadow-2xl overflow-hidden min-w-[48px]"
-                initial={{ x: "65%", opacity: 0.3 }}
-                whileHover={{ x: 0, opacity: 1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="hidden md:flex fixed bottom-8 left-8 z-[100] flex-row gap-2 p-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl overflow-hidden"
+                initial={{ opacity: 0.2 }}
+                animate={{ opacity: 0.2 }}
+                whileHover={{ opacity: 1, scale: 1.05 }}
+                transition={{ duration: 0.3 }}
             >
                 {socialLinks.map((link, index) => {
                     const Icon = link.icon;
@@ -35,7 +36,7 @@ export default function FloatingSocialBar() {
                             whileHover={{ scale: 1.1 }}
                             title={link.label}
                         >
-                            <Icon strokeWidth={1.5} className="w-4 h-4 relative z-10" />
+                            <Icon strokeWidth={1.5} className="w-5 h-5 relative z-10" />
                             {/* Glow Effect */}
                             <div className={`absolute inset-0 rounded-full opacity-0 group-hover:opacity-[0.15] bg-gradient-to-r ${accentObj.from} ${accentObj.to} transition-opacity duration-300 z-0`} />
                         </motion.a>

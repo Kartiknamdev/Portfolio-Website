@@ -115,12 +115,7 @@ export default function Skills() {
                       <div className="mb-4 p-3 rounded-xl bg-black/40 border border-white/10 shadow-inner flex items-center justify-center">
                         {skill.icon}
                       </div>
-                      <span className="text-white font-semibold text-sm sm:text-base mb-1">{skill.name}</span>
-                      {skill.level && (
-                        <span className="text-white/40 text-[10px] sm:text-xs uppercase tracking-wider font-bold block w-full">
-                          {skill.level}% Proficiency
-                        </span>
-                      )}
+                      <span className="text-white font-semibold text-sm sm:text-base">{skill.name}</span>
                     </div>
                   ))}
                 </div>

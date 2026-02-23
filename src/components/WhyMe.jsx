@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import StaggeredText from './StaggeredText';
+import { ArrowRight } from 'lucide-react';
 
 const whyMeData = [
     {
@@ -24,10 +25,10 @@ export default function WhyMe() {
         <section id="whyme" className="py-20 relative z-10 w-full overflow-hidden text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-                {/* Title row */}
-                <div className="flex justify-center md:justify-start mb-16">
+                {/* Title and CTA row */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 mb-16 px-4 md:px-0">
                     <motion.h2
-                        className="text-5xl md:text-7xl font-serif font-black drop-shadow-md text-white tracking-wider"
+                        className="text-5xl md:text-7xl font-serif font-black drop-shadow-md text-white tracking-wider text-center md:text-left"
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.5 }}
@@ -35,6 +36,26 @@ export default function WhyMe() {
                     >
                         Why Choose Me
                     </motion.h2>
+
+                    {/* Minimal CTA Button */}
+                    <motion.a
+                        href="mailto:kartikk12na@gmail.com"
+                        className="group flex items-center gap-4 px-2 py-2 pr-6 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/30 backdrop-blur-md transition-all duration-300 shadow-xl"
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+                    >
+                        <div
+                            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-lg"
+                            style={{ background: accentObj.gradient || accentObj.from || '#8b5cf6' }}
+                        >
+                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                        </div>
+                        <span className="text-white/80 group-hover:text-white font-semibold text-sm sm:text-base tracking-wide transition-colors uppercase">
+                            Let's Work Together
+                        </span>
+                    </motion.a>
                 </div>
 
                 {/* Cards row */}

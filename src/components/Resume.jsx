@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Briefcase, BookOpen, GraduationCap } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 
@@ -55,10 +56,21 @@ const journeyData = [
 
 export default function Resume() {
 	const { accentObj } = useTheme();
+	const containerRef = useRef(null);
+
+	// Track scroll progress purely within this section's bounds
+	const { scrollYProgress } = useScroll({
+		target: containerRef,
+		offset: ["start center", "end end"]
+	});
+
+	// The "Laser" line fills downwards as we scroll
+	const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
 	return (
-		<section id="resume" className="py-20 relative z-10 w-full overflow-hidden text-white">
-			<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+		<section id="resume" className="py-20 relative z-10 w-full overflow-hidden text-white" ref={containerRef}>
+			<div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative pt-10">
+
 				<motion.h2
 					className="text-4xl md:text-5xl font-extrabold text-center mb-24 drop-shadow-md text-white"
 					initial={{ opacity: 0, y: -30 }}
@@ -69,10 +81,16 @@ export default function Resume() {
 					My Journey
 				</motion.h2>
 
-				{/* Global Vertical Line */}
-				<div className="absolute left-10 md:left-1/2 top-48 bottom-10 w-1 bg-white/10 md:-translate-x-1/2 rounded-full" />
+				{/* Global Vertical Line Background */}
+				<div className="absolute left-10 md:left-1/2 top-48 bottom-10 w-1 bg-white/10 md:-translate-x-1/2 rounded-full hidden md:block" />
 
-				<div className="space-y-12 md:space-y-24">
+				{/* Global Vertical Line Fill (Laser) */}
+				<motion.div
+					className="absolute left-10 md:left-1/2 top-48 bottom-10 w-1 md:-translate-x-1/2 origin-top rounded-full z-0 hidden md:block"
+					style={{ scaleY, background: accentObj.gradient || accentObj.from || '#8b5cf6' }}
+				/>
+
+				<div className="space-y-12 md:space-y-24 relative z-10">
 					{journeyData.map((item, index) => {
 						const isLeft = index % 2 === 0;
 
@@ -84,28 +102,29 @@ export default function Resume() {
 									className="absolute left-6 md:left-1/2 top-6 md:top-1/2 w-12 h-12 md:w-16 md:h-16 -translate-x-1/2 md:-translate-y-1/2 flex items-center justify-center rounded-full z-20 group"
 									initial={{ opacity: 0, scale: 0 }}
 									whileInView={{ opacity: 1, scale: 1 }}
-									viewport={{ once: true, amount: 0.5 }}
+									viewport={{ once: true, margin: "-100px" }}
 									transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
 								>
 									<div
-										className="absolute inset-0 rounded-full blur-[12px] opacity-60 group-hover:blur-[20px] transition-all duration-300"
+										className="absolute inset-0 rounded-full blur-[12px] opacity-60 group-hover:blur-[20px] transition-all duration-300 pointer-events-none"
 										style={{ background: accentObj.gradient || accentObj.to || '#ec4899' }}
 									/>
 									<div
-										className="w-full h-full rounded-full border-4 border-gray-900 flex items-center justify-center relative z-10 shadow-xl"
+										className="w-full h-full rounded-full border-4 border-gray-900 flex items-center justify-center relative z-10 shadow-xl group-hover:scale-110 transition-transform duration-300"
 										style={{ background: accentObj.gradient || accentObj.from || '#8b5cf6' }}
 									>
 										{item.icon}
 									</div>
 								</motion.div>
 
-								{/* Content Card */}
+								{/* Content Card (CodePen Style Slide-In) */}
+								{/* If it's on the left visual side (isLeft=true), slide from left (-50x). If right side, slide from right (50x). */}
 								<motion.div
-									className={`w-[calc(100%-4.5rem)] md:w-[calc(50%-4rem)] ml-auto md:ml-0 p-6 md:p-8 bg-gray-900/60 rounded-[2rem] border border-white/5 shadow-2xl backdrop-blur-xl relative z-10 hover:bg-gray-800/60 hover:border-white/10 transition-colors group`}
-									initial={{ opacity: 0, x: isLeft ? 50 : -50, y: 20 }}
-									whileInView={{ opacity: 1, x: 0, y: 0 }}
-									viewport={{ once: true, amount: 0.3 }}
-									transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
+									className={`w-[calc(100%-4.5rem)] md:w-[calc(50%-4rem)] ml-auto md:ml-0 p-6 md:p-8 bg-gray-900/60 rounded-[2rem] border border-white/5 shadow-2xl backdrop-blur-xl relative z-10 hover:bg-gray-800/80 hover:border-white/20 transition-all duration-500 group`}
+									initial={{ opacity: 0, x: isLeft ? -100 : 100, scale: 0.9 }}
+									whileInView={{ opacity: 1, x: 0, scale: 1 }}
+									viewport={{ once: true, margin: "-100px" }}
+									transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.2 }}
 								>
 									{/* Subtle Card Glow */}
 									<div
@@ -113,9 +132,10 @@ export default function Resume() {
 										style={{ background: accentObj.color }}
 									/>
 
+									{/* Card Top / Header */}
 									<div className="flex flex-col gap-1 mb-6">
 										<span
-											className="text-xs md:text-sm font-bold tracking-widest uppercase inline-block mb-1"
+											className="text-xs md:text-sm font-bold tracking-widest uppercase inline-block mb-1 px-3 py-1 bg-white/5 rounded-full w-fit"
 											style={{ color: accentObj.color || '#ec4899' }}
 										>
 											{item.date}
@@ -124,12 +144,19 @@ export default function Resume() {
 										<h4 className="text-base font-medium text-white/50">{item.organization}</h4>
 									</div>
 
+									{/* Expandable Details Container */}
 									{item.details.length > 0 && (
-										<ul className="list-disc pl-5 space-y-2 text-white/70 font-light text-[13px] md:text-[15px] leading-relaxed">
-											{item.details.map((desc, j) => (
-												<li key={j}>{desc}</li>
-											))}
-										</ul>
+										<div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+											<div className="overflow-hidden">
+												<div className="border-t border-white/10 mt-4 pt-4">
+													<ul className="list-disc pl-5 space-y-2 text-white/70 font-light text-[13px] md:text-[15px] leading-relaxed">
+														{item.details.map((desc, j) => (
+															<li key={j}>{desc}</li>
+														))}
+													</ul>
+												</div>
+											</div>
+										</div>
 									)}
 								</motion.div>
 

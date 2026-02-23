@@ -8,6 +8,7 @@ import ThemeToggleMenu from './components/ThemeToggleMenu';
 import FloatingSocialBar from './components/FloatingSocialBar';
 import ScrollToTop from './components/ScrollToTop';
 import CustomCursor from './components/CustomCursor';
+import HexagonBackground from './components/HexagonBackground';
 import { useTheme } from './context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import './App.css';
@@ -16,7 +17,7 @@ function App() {
   const { theme, accentObj } = useTheme();
 
   return (
-    <div className="overflow-hidden max-w-[100vw]">
+    <div className="overflow-x-hidden w-full relative">
       <CustomCursor />
       {/* Main Dynamic Background */}
       <motion.div
@@ -25,6 +26,7 @@ function App() {
         animate={{ background: theme.bgGradient || theme.player }}
         transition={{ duration: 1.5, ease: "easeInOut" }}
       >
+        <HexagonBackground />
         {/* Animated fog/mist effects */}
         <div className="fixed inset-0 pointer-events-none">
           <div className="absolute inset-0 animate-fog opacity-[0.25]">
@@ -52,20 +54,16 @@ function App() {
           <div style={{
             height: '100%',
             width: '100%',
-            background: 'linear-gradient(120deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
+            background: 'linear-gradient(120deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%)',
             borderRight: '1px solid rgba(255,255,255,0.08)',
-            backdropFilter: 'blur(24px) saturate(160%)',
-            WebkitBackdropFilter: 'blur(24px) saturate(160%)', // For Safari
           }} />
         </div>
         <div className="hidden md:block fixed top-0 right-0 h-full w-20 z-10 pointer-events-none">
           <div style={{
             height: '100%',
             width: '100%',
-            background: 'linear-gradient(300deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
+            background: 'linear-gradient(300deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.01) 100%)',
             borderLeft: '1px solid rgba(255,255,255,0.08)',
-            backdropFilter: 'blur(24px) saturate(160%)',
-            WebkitBackdropFilter: 'blur(24px) saturate(160%)', // For Safari
           }} />
         </div>
 
