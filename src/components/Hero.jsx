@@ -55,9 +55,9 @@ export default function Hero() {
     return () => window.removeEventListener('keydown', handleEsc);
   }, []);
 
-  // Lock body scroll when modal is open
+  // Lock body scroll when modal is open (Desktop only to prevent Framer Motion useScroll flicker on mobile)
   useEffect(() => {
-    if (isAboutOpen) {
+    if (isAboutOpen && !isMobile) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -67,7 +67,7 @@ export default function Hero() {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isAboutOpen]);
+  }, [isAboutOpen, isMobile]);
 
   // Modal Animation Variants for Responsive Behavior
   const overlayVariants = {
@@ -90,7 +90,7 @@ export default function Hero() {
   return (
     <>
       {/* Outer container acts as the scroll track for the sticky hero */}
-      <section ref={containerRef} className="relative h-[150vh] md:h-[200vh] w-full z-0 snap-start">
+      <section ref={containerRef} className="relative h-[150vh] md:h-[200vh] w-full max-w-full overflow-x-clip z-0 snap-start">
 
         {/* Sticky inner container that holds the actual Hero UI */}
         <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">

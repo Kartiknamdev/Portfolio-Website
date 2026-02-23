@@ -147,7 +147,7 @@ export default function Skills() {
               <motion.div
                 className="flex whitespace-nowrap gap-4 py-2 shrink-0 items-center justify-start min-w-full"
                 animate={{ x: ["0%", "-50%"] }}
-                transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+                transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
               >
                 {marqueeTools.map((tool, index) => (
                   <div key={index} className="flex items-center gap-3 px-6 py-3.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shrink-0 hover:bg-white/10 transition-colors cursor-default">

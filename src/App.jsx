@@ -17,7 +17,7 @@ function App() {
   const { theme, accentObj } = useTheme();
 
   return (
-    <div className="overflow-x-hidden w-full relative">
+    <div className="overflow-x-clip w-full max-w-full relative">
       <CustomCursor />
       {/* Main Dynamic Background */}
       <motion.div

@@ -31,7 +31,6 @@ html {
 body {
   margin: 0;
   padding: 0;
-  min-width: 320px;
   width: 100%;
   overflow-x: hidden;
   position: relative;
@@ -188,7 +187,7 @@ button:focus-visible {
 #root {
   overflow-x: hidden;
   width: 100%;
-  max-width: 100vw;
+  max-width: 100%;
 }
 
 /* Fix for elements that might extend beyond viewport width */

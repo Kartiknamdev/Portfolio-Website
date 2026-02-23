@@ -95,11 +95,11 @@ export default function Resume() {
 						const isLeft = index % 2 === 0;
 
 						return (
-							<div key={index} className={`relative flex items-center justify-between w-full ${isLeft ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+							<div key={index} className={`relative flex items-center justify-center md:justify-between w-full mt-8 md:mt-0 ${isLeft ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
 
 								{/* Timeline Node */}
 								<motion.div
-									className="absolute left-6 md:left-1/2 top-6 md:top-1/2 w-12 h-12 md:w-16 md:h-16 -translate-x-1/2 md:-translate-y-1/2 flex items-center justify-center rounded-full z-20 group"
+									className="absolute left-30 md:left-1/2 -top-5 md:top-1/2 w-12 h-12 md:w-16 md:h-16 md:-translate-x-1/2 md:-translate-y-1/2 flex items-center justify-center rounded-full z-30 group shadow-xl"
 									initial={{ opacity: 0, scale: 0 }}
 									whileInView={{ opacity: 1, scale: 1 }}
 									viewport={{ once: true, margin: "-100px" }}
@@ -120,7 +120,7 @@ export default function Resume() {
 								{/* Content Card (CodePen Style Slide-In) */}
 								{/* If it's on the left visual side (isLeft=true), slide from left (-50x). If right side, slide from right (50x). */}
 								<motion.div
-									className={`w-[calc(100%-4.5rem)] md:w-[calc(50%-4rem)] ml-auto md:ml-0 p-6 md:p-8 bg-gray-900/60 rounded-[2rem] border border-white/5 shadow-2xl backdrop-blur-xl relative z-10 hover:bg-gray-800/80 hover:border-white/20 transition-all duration-500 group`}
+									className={`w-full md:w-[calc(50%-4rem)] p-6 pt-10 md:pt-8 md:p-8 bg-gray-900/60 rounded-[2rem] border border-white/5 shadow-2xl backdrop-blur-xl relative z-10 hover:bg-gray-800/80 hover:border-white/20 transition-all duration-500 group`}
 									initial={{ opacity: 0, x: isLeft ? -100 : 100, scale: 0.9 }}
 									whileInView={{ opacity: 1, x: 0, scale: 1 }}
 									viewport={{ once: true, margin: "-100px" }}
