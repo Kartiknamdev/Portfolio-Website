@@ -189,7 +189,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                Hey, I'm always eager to learn new technologies and bring ideas to life. Let's shake hands with me.
+                Hey, I'm always eager to learn new technologies and bring ideas to life.
               </motion.p>
 
               <motion.div
