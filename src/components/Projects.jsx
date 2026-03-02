@@ -7,7 +7,7 @@ const projectsData = [
 	{
 		title: 'Rewindly - Experience Music',
 		description: 'A retro-meets-modern music experience app designed to stand out in a crowded space.',
-		image: '/Rewindlyhome.png',
+		image: '/RewindlyHome.png',
 		gradient: 'from-orange-500 to-yellow-500',
 		live: 'https://rewindly-ten.vercel.app',
 	},
@@ -19,19 +19,49 @@ const projectsData = [
 		live: 'https://peer-taskk.vercel.app',
 	},
 	{
-		title: 'SkrappeMind - AI Scraper',
-		description: 'AI-powered web scraping tool for OEM vulnerabilities built purely in Python/Streamlit.',
-		image: '/Skrappemind.png',
+		title: 'Vibrissa - Artworks',
+		description: 'Where timeless artistry meets elegance. A collection of extraordinary Artworks',
+		image: '/VibrissaHome.png',
 		gradient: 'from-gray-800 to-gray-600',
-		live: 'https://Skrappemind.streamlit.app',
+		live: 'https://vibrissa.vercel.app',
 	},
+	
+	{
+		title: 'Pulp - Weather App',
+		description: 'Pulp is a sleek, minimalistic weather app designed to make checking the forecast feel effortless and aesthetic.With its clean and smooth UI its an elegant experience.',
+		image: '/PulpHome.png',
+		gradient: 'from-gray-800 to-gray-600',
+		live: 'https://pulp-two.vercel.app',
+	},
+	{
+		title: 'Lemon - Concept Food Delivery App',
+		description: 'It is a concept food delivery app that is designed to make food delivery more efficient and enjoyable.',
+		image: '/lemonHome.png',
+		gradient: 'from-blue-400 to-indigo-500',
+		live: 'https://lemon-black.vercel.app/',
+	},
+	{
+		title: 'CivicEYe - Real Time Traffic Analysis',
+		description: 'Civic Eye is a real-time traffic analysis app that analyzes traffic conditions and provides insights to help you navigate through traffic with ease.',
+		image: '/civiceye.png',
+		gradient: 'from-blue-400 to-indigo-500',
+		live: 'https://civiceye-nu.vercel.app',
+	},
+	
 	{
 		title: 'SecureSight - Dashboard',
 		description: 'An interactive Cybersecurity dashboard making learning fun and accessible.',
-		image: '/SecureSight.png',
+		image: '/SecuresightV2.png',
 		gradient: 'from-cyan-500 to-blue-600',
 		live: 'https://secure-sight-v2.vercel.app/',
-	}
+	},
+	{
+		title: 'Thynk - Practice Platform',
+		description: 'Built with love for learners, Thynk combines interactive practice, smart analytics, and a modern UI to help you reach your goals.',
+		image: '/Thynk.png',
+		gradient: 'from-gray-800 to-gray-600',
+		live: 'https://thynk-ten.vercel.app',
+	},
 ];
 
 const ProjectCard = ({ project, index, accentObj }) => {
