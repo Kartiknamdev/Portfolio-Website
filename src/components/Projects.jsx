@@ -7,7 +7,7 @@ const projectsData = [
 	{
 		title: 'Rewindly - Experience Music',
 		description: 'A retro-meets-modern music experience app designed to stand out in a crowded space.',
-		image: '/RewindlyHome.png',
+		image: '/Rewindlyhome.png',
 		gradient: 'from-orange-500 to-yellow-500',
 		live: 'https://rewindly-ten.vercel.app',
 	},
