@@ -62,6 +62,13 @@ const projectsData = [
 		gradient: 'from-gray-800 to-gray-600',
 		live: 'https://thynk-ten.vercel.app',
 	},
+	{
+		title: 'Chrono - Explore the world.',
+		description: 'Chronos AI compiles complex technological topics, software architectures, and alternative histories into beautiful, interactive dashboards.',
+		image: '/Chrono_Home.png',
+		gradient: 'from-gray-800 to-gray-600',
+		live: 'https://chronos-three-ecru.vercel.app',
+	},
 ];
 
 const ProjectCard = ({ project, index, accentObj }) => {
