@@ -211,7 +211,7 @@ export default function Hero() {
                   />
                 </button>
                 <a
-                  href="/Kartik namdev Resume Feb.pdf"
+                  href="/Kartik_Namdev_Resume_.pdf"
                   download
                   className="group px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-400 hover:from-orange-600 hover:to-orange-500 text-white font-bold rounded-xl shadow-lg transition-all duration-300 ease-in-out text-base relative overflow-hidden text-center"
                 >
