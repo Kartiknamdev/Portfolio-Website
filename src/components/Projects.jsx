@@ -7,7 +7,7 @@ const projectsData = [
 	{
 		title: 'Rewindly - Experience Music',
 		description: 'A retro-meets-modern music experience app designed to stand out in a crowded space.',
-		image: '/RewindlyHome.png',
+		image: '/Rewindlyhome.png',
 		gradient: 'from-orange-500 to-yellow-500',
 		live: 'https://rewindly-ten.vercel.app',
 	},
@@ -61,6 +61,13 @@ const projectsData = [
 		image: '/Thynk.png',
 		gradient: 'from-gray-800 to-gray-600',
 		live: 'https://thynk-ten.vercel.app',
+	},
+	{
+		title: 'Chrono - Explore the world.',
+		description: 'Chronos AI compiles complex technological topics, software architectures, and alternative histories into beautiful, interactive dashboards.',
+		image: '/Chrono_Home.png',
+		gradient: 'from-gray-800 to-gray-600',
+		live: 'https://chronos-three-ecru.vercel.app',
 	},
 ];
 
